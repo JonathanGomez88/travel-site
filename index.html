@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <label for="Departure">Departure City/Airport</label>
+    <input type="text" id="departure-city">
+    <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>
+    <br>
+    <label for="Destination" id="destination-city">Destination</label>
+    <input type="text">
+    <br>
+    <label for="dep date">Departure Date</label>
+    <input type="text" id="departure-date">
+    <br>
+    <label for="return date" id="return-date">Return Date</label>
+    <input type="text">
+    <br>
+    <button id="submit-btn">submit</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>price</th>
+                <th>airport</th>
+                <th>airline</th>
+                <th>dep date</th>
+                <th>rtn date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>___$99.00</td>
+                <td>___LAX</td>
+                <td>___Delta</td>
+                <td>___2018-09-15</td>
+                <td>___2018-09-26</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src=""></script>
+</body>
+
+</html>
