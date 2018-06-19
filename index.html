@@ -8,45 +8,68 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </head>
 
 <body>
-    <label for="Departure">Departure City/Airport</label>
-    <input type="text" id="departure-city">
-    <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>
-    <br>
-    <label for="Destination" id="destination-city">Destination</label>
-    <input type="text">
-    <br>
-    <label for="dep date">Departure Date</label>
-    <input type="text" id="departure-date">
-    <br>
-    <label for="return date" id="return-date">Return Date</label>
-    <input type="text">
-    <br>
-    <button id="submit-btn">submit</button>
+    <div class="container">
+        <div class="row">
+            <div class="col s2">
+            </div>
+            <div class="col s8">
+                <label for="Departure">Departure Airport (Iata)</label>
+                <input type="text" id="departure-iata" placeholder="ATL">
+                <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>
+                <br>
+                <label for="Destination">Destination Airport (Iata)</label>
+                <input type="text" placeholder="LAX" id="destination-iata">
+                <input type="checkbox" id="one-way" value="one-way">
+                <label for="one-way checkbox">One Way</label>
+                <br>
+                <label for="dep date">Departure Date</label>
+                <input type="date" id="departure-date">
+                <br>
+                <label for="return date">Return Date</label>
+                <input type="date" id="return-date">
+                <br>
+                <a class="waves-effect waves-light btn" class="submit-btn">
+                    <i class="material-icons right">airplanemode_active</i>Go</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>price</th>
-                <th>airport</th>
-                <th>airline</th>
-                <th>dep date</th>
-                <th>rtn date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>___$99.00</td>
-                <td>___LAX</td>
-                <td>___Delta</td>
-                <td>___2018-09-15</td>
-                <td>___2018-09-26</td>
-            </tr>
-        </tbody>
-    </table>
-    <script src=""></script>
+            </div>
+            <div class="col s2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>$Price</th>
+                            <th>Airport</th>
+                            <th>Airline</th>
+                            <th>Departure</th>
+                            <th>Return</th>
+                            <th>dep time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$99.00</td>
+                            <td>LAX</td>
+                            <td>Delta</td>
+                            <td>2018-09-15</td>
+                            <td>2018-09-26</td>
+                            <td>9:45am</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <script src=""></script>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
