@@ -1,11 +1,60 @@
 
 $("input[id='one-way']").on("click", function (event) {
-  $("#return-date").hide()
+  $(".return-date").hide()
 })
 
 $("input[id='round-trip']").on("click", function (event) {
-  $("#return-date").show()
+  $(".return-date").show()
 })
+
+
+function roundTripDisplay(results, departureIATA, destinationIATA) {
+
+  var resultsArray = results.results
+
+  // console.log(resultsArray)
+
+  for(var i = 0; i < resultsArray.length; i++) {
+    
+    var inboundDuration;
+    var flightFare = resultsArray[i].fare.total_price
+    var inboundArrivalDate;
+    var airline;
+    var outboundDuration;
+    var outboundArrivalDate;
+    var destinationAirport
+
+
+ 
+  
+    for(var y = 0; y <resultsArray[i].itineraries.length; y++) {
+
+      console.log(resultsArray[i].itineraries[y])
+      console.log(resultsArray[i].itineraries[y].inbound.duration)
+      inboundDuration = resultsArray[i].itineraries[y].inbound.duration;
+      console.log(inboundDuration)
+      inboundArrivalDate = resultsArray[i].itineraries[y].inbound.flights[0].arrives_at.split("T");
+      console.log(inboundArrivalDate)
+      airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
+      console.log(airline)
+      
+
+
+      outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
+      outboundArrivalDate = resultsArray[i].itineraries[y].outbound.flights[0].arrives_at.split("T");
+      
+      destinationAirport = destinationIATA
+
+    }
+
+    // This is where you want to append everything
+    $("#flight-display > tbody").append("<tr><td>$" + flightFare + "</td><td>" + departureIATA + "</td><td>" + airline + "</td><td>" + outboundArrivalDate + "</td><td>" + "NA" + "</td></tr>")
+  
+  }
+
+
+}
+
 
 // Click handlers which takes input and runs it through apis
 $("#submit-btn").on("click", function (event) {
@@ -22,10 +71,10 @@ console.log(returnDate);
 console.log(departureIATA);
 console.log(destinationIATA);
 
-  var oneWayQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&number_of_results=10"
+  var oneWayQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&nonstop=true&number_of_results=10"
   console.log(oneWayQueryURL)
 
-  var roundTripQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&return_date=" + returnDate + "&number_of_results=10"
+  var roundTripQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&return_date=" + returnDate + "&nonstop=true&number_of_results=10"
 
 console.log(roundTripQueryURL)
 
@@ -39,6 +88,7 @@ if($("input[id='round-trip']:checked").val()) {
     method: "GET"
   }).then(function (response) {
     console.log(response);
+    roundTripDisplay(response, departureIATA, destinationIATA)
   });
 }  else {
   $.ajax({
@@ -50,69 +100,5 @@ if($("input[id='round-trip']:checked").val()) {
 }
  
 
-
-// } else {
-
-
-// $("#").on("click", function () {
-
-//   alert("Infor added")
-//   var queryURL = "";
-
-//   $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//   })
-
-//     .then(function (response) {
-
-//       var results = response.data;
-
-//       for (var i = 0; i < results.length; i++) {
-
-//       }
-
-//       var infoURL = $("<>");
-
-//       infoUrl.attr("src", );
-//       infoUrl.attr("", "");
-
-
-//       $("#").prepend(infoURL);
-//     });
-
-
-
-
-  // 3 Ajax calls
-
-  // 1st call takes the user city inputs, runs them through Aviation edge and changes them to IATA
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET"
-  // }).then(function (response) {
-  //   console.log(response);
-  //   console.log(response.Runtime);
-  // });
-
-  // 2nd call takes the IATA and uses it in amadeus search parameters
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET"
-  // }).then(function (response) {
-  //   console.log(response);
-  //   console.log(response.Runtime);
-  // });
-
-  // 3rd call takes the airline code and runs it through Aviation Edge to get the airline names
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET"
-  // }).then(function (response) {
-  //   console.log(response);
-  //   console.log(response.Runtime);
-  // });
-
-  // Then we have to take the results and post them to the webpage using append method to create new divs
 
 })
