@@ -12,17 +12,17 @@
 
 <body>
     <label for="Departure">Departure City/Airport</label>
-    <input type="text" id="departure-city">
+    <input type="text" id="departure-iata">
     <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>
     <br>
-    <label for="Destination" id="destination-city">Destination</label>
-    <input type="text">
+    <label for="Destination" >Destination</label>
+    <input type="text" id="destination-iata">
     <br>
     <label for="dep date">Departure Date</label>
     <input type="text" id="departure-date">
     <br>
-    <label for="return date" id="return-date">Return Date</label>
-    <input type="text">
+    <label for="return date" >Return Date</label>
+    <input type="text" id="return-date">
     <br>
     <button id="submit-btn">submit</button>
 
@@ -46,7 +46,7 @@
             </tr>
         </tbody>
     </table>
-    <script src=""></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
