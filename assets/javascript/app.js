@@ -48,23 +48,29 @@ function roundTripDisplay(results, departureIATA, destinationIATA) {
     }
 
     // This is where you want to append everything
-    $("#flight-display > tbody").append("<tr><td>$" + flightFare + "</td><td>" + departureIATA + "</td><td>" + airline + "</td><td>" + outboundArrivalDate + "</td><td>" + "NA" + "</td></tr>")
+    $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + departureIATA + "</td><td>" + airline + "</td><td>" + outboundArrivalDate[0] + "</td><td>" + outboundArrivalDate[1] + "</td></tr>")
   
   }
 
 
 }
 
+// function reset() {
+
+// }
+
+
 
 // Click handlers which takes input and runs it through apis
 $("#submit-btn").on("click", function (event) {
+
 
   event.preventDefault();
 
 var departureDate = $("#departure-date").val();
 var returnDate = $("#return-date").val();
-var departureIATA = $("#departure-iata").val();
-var destinationIATA = $("#destination-iata").val();
+var departureIATA = $("#departure-iata").val().trim();
+var destinationIATA = $("#destination-iata").val().trim();
 
 console.log(departureDate);
 console.log(returnDate);
@@ -99,6 +105,12 @@ if($("input[id='round-trip']:checked").val()) {
   });
 }
  
+// clear submit input 
+
+$("#departure-iata").val("")
+$("#destination-iata").val("")
+$("#departure-date").val("yyyy/MM/dd")
+$("#return-date").val("yyyy/MM/dd")
 
 
 })

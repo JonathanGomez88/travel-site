@@ -102,10 +102,10 @@ var options = {
       case 13: // enter
         selectIndex(selectedIndex);
         break;
-      case 9: // enter
-        selectIndex(selectedIndex);
-        e.stopPropagation();
-        return;
+      // case 9: // enter
+      //   selectIndex(selectedIndex);
+      //   e.stopPropagation();
+        // return;
       case 40: // down
         selectedIndex++;
         if (selectedIndex >= numResults) {
