@@ -1,10 +1,10 @@
 
 $("input[id='one-way']").on("click", function (event) {
-  $(".return-date").hide()
+  $(".return-class").hide()
 })
 
 $("input[id='round-trip']").on("click", function (event) {
-  $(".return-date").show()
+  $(".return-class").show()
 })
 
 
