@@ -8,11 +8,11 @@ $("input[id='round-trip']").on("click", function (event) {
 })
 
 
-function roundTripDisplay(results, departureIATA, destinationIATA) {
+function roundTripDisplay(results) {
 
   var resultsArray = results.results
 
-  // console.log(resultsArray)
+  console.log(resultsArray)
 
   for(var i = 0; i < resultsArray.length; i++) {
     
@@ -23,41 +23,73 @@ function roundTripDisplay(results, departureIATA, destinationIATA) {
     var outboundDuration;
     var outboundArrivalDate;
     var destinationAirport
+    var departureAirport
 
 
  
   
-    for(var y = 0; y <resultsArray[i].itineraries.length; y++) {
+    for(var y = 0; y < resultsArray[i].itineraries.length; y++) {
 
-      console.log(resultsArray[i].itineraries[y])
-      console.log(resultsArray[i].itineraries[y].inbound.duration)
+      
       inboundDuration = resultsArray[i].itineraries[y].inbound.duration;
-      console.log(inboundDuration)
-      inboundArrivalDate = resultsArray[i].itineraries[y].inbound.flights[0].arrives_at.split("T");
-      console.log(inboundArrivalDate)
+      inboundArrivalDate = moment(resultsArray[i].itineraries[y].inbound.flights[0].arrives_at);
       airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
-      console.log(airline)
-      
-
-
       outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
-      outboundArrivalDate = resultsArray[i].itineraries[y].outbound.flights[0].arrives_at.split("T");
-      
-      destinationAirport = destinationIATA
-
-    }
+      outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
+      destinationAirport = resultsArray[i].itineraries[y].inbound.flights[0].destination.airport;
+      departureAirport =  resultsArray[i].itineraries[y].inbound.flights[0].origin.airport;
+    
 
     // This is where you want to append everything
-    $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + departureIATA + "</td><td>" + airline + "</td><td>" + outboundArrivalDate[0] + "</td><td>" + outboundArrivalDate[1] + "</td></tr>")
-  
+    $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + airline + "</td><td>" + destinationAirport + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "</td><td>" + departureAirport + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "</td></tr>")
+    }
   }
 
 
 }
 
-// function reset() {
 
-// }
+function oneWayDisplay(results) {
+
+  var resultsArray = results.results
+
+  console.log(resultsArray)
+
+  for(var i = 0; i < resultsArray.length; i++) {
+    
+    var inboundDuration;
+    var flightFare = resultsArray[i].fare.total_price
+    var inboundArrivalDate;
+    var airline;
+    var destinationAirport;
+    var departureAirport;
+
+
+ 
+  
+    for(var y = 0; y < resultsArray[i].itineraries.length; y++) {
+
+      
+      airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
+      outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
+      outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
+      departureAirport = resultsArray[i].itineraries[y].inbound.flights[0].origin.airport;
+
+    
+
+    // This is where you want to append everything
+    $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + airline + "</td><td>" + departureAirport + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "</td></tr>")
+    }
+  }
+
+ 
+  
+
+}
+
+
+
+
 
 
 
@@ -72,17 +104,13 @@ var returnDate = $("#return-date").val();
 var departureIATA = $("#departure-iata").val().trim();
 var destinationIATA = $("#destination-iata").val().trim();
 
-console.log(departureDate);
-console.log(returnDate);
-console.log(departureIATA);
-console.log(destinationIATA);
 
   var oneWayQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&nonstop=true&number_of_results=10"
-  console.log(oneWayQueryURL)
+  
 
   var roundTripQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&return_date=" + returnDate + "&nonstop=true&number_of_results=10"
 
-console.log(roundTripQueryURL)
+
 
 
 
@@ -94,7 +122,7 @@ if($("input[id='round-trip']:checked").val()) {
     method: "GET"
   }).then(function (response) {
     console.log(response);
-    roundTripDisplay(response, departureIATA, destinationIATA)
+    roundTripDisplay(response)
   });
 }  else {
   $.ajax({
@@ -102,6 +130,7 @@ if($("input[id='round-trip']:checked").val()) {
     method: "GET"
   }).then(function (response) {
     console.log(response);
+    oneWayDisplay(response)
   });
 }
  
