@@ -10,8 +10,12 @@
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
+    <script src="https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js"></script>
+    <script src="https://screenfeedcontent.blob.core.windows.net/html/airports.js"></script> -->
 </head>
 
 <body>
@@ -20,42 +24,42 @@
             <div class="col s2">
             </div>
             <div class="col s8">
-                <label for="Departure">Departure Airport (Iata)</label>
-                <input type="text" id="departure-iata" placeholder="ATL">
-                <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>
-                <br>
-                <label for="Destination">Destination Airport (Iata)</label>
-                <input type="text" placeholder="LAX" id="destination-iata">
-                
-                <p>
-                    <label>
-                        <input name="group1" id="round-trip"type="radio" checked />
-                        <span>Roundtrip</span>
-                    </label>
-                    <label>
-                        <input name="group1" type="radio" id="one-way" />
-                        <span>One Way</span>
-                    </label>
-                
-                </p>
-                <br>
-                <label for="dep date">Departure Date</label>
-                <input type="date" id="departure-date">
-                <br>
-                <label for="return date">Return Date</label>
-                <input type="date" id="return-date">
-                <br>
-                <a class="waves-effect waves-light btn" id="submit-btn">
-                    <i class="material-icons right">airplanemode_active</i>Go</a>
-
+                <form action="">
+                    <label for="Departure">Departure Airport (Iata)</label>
+                    <input class="auto" type="text" id="departure-iata" placeholder="ATL">
+                    <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>                  
+                    <br>
+                    <label for="Destination">Destination Airport (Iata)</label>
+                    <input class="auto2" type="text" placeholder="LAX" id="destination-iata">
+                    <p>
+                        <label>
+                            <input name="group1" id="round-trip" type="radio" checked />
+                            <span>Roundtrip</span>
+                        </label>
+                        <label>
+                            <input name="group1" type="radio" id="one-way" />
+                            <span>One Way</span>
+                        </label>
+                    </p>
+                    <br>
+                    <label for="dep date">Departure Date</label>
+                    <input type="date" id="departure-date">
+                    <br>
+                    <label class="return-class" for="return date">Return Date</label>
+                    <input class="return-class" type="date" id="return-date">
+                    <br>
+                    <a class="waves-effect waves-light btn" id="submit-btn">
+                        <i class="material-icons right">airplanemode_active</i>Go</a>
+                </form>
             </div>
             <div class="col s2">
             </div>
         </div>
         <div class="row">
-            <div class="col s12">
-
-                <table id="flight-display">
+            <div class="col s1">
+            </div>
+            <div class="col s10">
+                <table>
                     <thead>
                         <tr>
                             <th>$Price</th>
@@ -80,9 +84,14 @@
                     </tbody>
                 </table>
                 <script src="assets/javascript/app.js"></script>
+                <!-- <script src="assets/javascript/airport.js"></script> -->
+
+            </div>
+            <div class="col s1">
             </div>
         </div>
     </div>
 </body>
 
 </html>
+
