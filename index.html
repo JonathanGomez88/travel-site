@@ -16,23 +16,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
     <script src="https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js"></script>
     <script src="https://screenfeedcontent.blob.core.windows.net/html/airports.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col s2">
+                <input class="auto" type="text" placeholder="enter city for IATA code">
             </div>
             <div class="col s8">
                 <form action="">
                     <label for="Departure">Departure Airport (Iata)</label>
-                    <input class="auto" type="text" id="departure-iata" placeholder="ATL">
+                    <input class="top" type="text" id="departure-iata" placeholder="ATL">
                     <!-- <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a> -->
                     <br>
                     <label for="Destination">Destination Airport (Iata)</label>
-                    <input class="auto2" type="text" placeholder="LAX" id="destination-iata">
+                    <input class="" type="text" placeholder="LAX" id="destination-iata">
                     <p>
                         <label>
                             <input name="group1" id="round-trip" type="radio" checked />
@@ -65,11 +64,12 @@
                     <thead>
                         <tr>
                             <th>$Price</th>
-                            <th>Airline</th>
+                            <th>Departure Airline</th>
                             <th>Departure Airport</th>
                             <th>Departure Date</th>
                             <th>Departure Time</th>
                             
+                            <th>Return Airline</th>
                             <th>Return Airport</th>
                             <th>Return Date</th>
                             <th>Return Time</th>
@@ -81,6 +81,8 @@
                 </table>
                 <script src="assets/javascript/app.js"></script>
                 <script src="assets/javascript/airport.js"></script>
+                <!-- <script src="assets/javascript/airport2.js"></script> -->
+
 
             </div>
             <div class="col s1">
