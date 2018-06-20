@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
     <script src="https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js"></script>
-    <script src="https://screenfeedcontent.blob.core.windows.net/html/airports.js"></script> -->
+    <script src="https://screenfeedcontent.blob.core.windows.net/html/airports.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                 <form action="">
                     <label for="Departure">Departure Airport (Iata)</label>
                     <input class="auto" type="text" id="departure-iata" placeholder="ATL">
-                    <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a>
+                    <!-- <a href="http://www.iata.org/publications/Pages/code-search.aspx" target="popup" onclick="window.open('http://www.iata.org/publications/Pages/code-search.aspx','name','width=600,height=800')">Iata lookup</a> -->
                     <br>
                     <label for="Destination">Destination Airport (Iata)</label>
                     <input class="auto2" type="text" placeholder="LAX" id="destination-iata">
@@ -59,32 +59,27 @@
             <div class="col s1">
             </div>
             <div class="col s10">
-                <table>
+                <table id="flight-display">
                     <thead>
                         <tr>
                             <th>$Price</th>
-                            <th>Airport</th>
-                            <th>Airline</th>
-                            <th>Departure</th>
+                            <th>Departure Airline</th>
+                            <th>Departure Airport</th>
+                            <th>Departure Date</th>
                             <th>Departure Time</th>
-                            <th>Return</th>
+                            
+                            <th>Return Airline</th>
+                            <th>Return Airport</th>
+                            <th>Return Date</th>
                             <th>Return Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>$99.00</td>
-                            <td>LAX</td>
-                            <td>Delta</td>
-                            <td>2018-09-15</td>
-                            <td>2018-09-26</td>
-                            <td>9:45am</td>
-                            <td>9:46am</td>
-                        </tr>
+                        <!-- js prepends here -->
                     </tbody>
                 </table>
                 <script src="assets/javascript/app.js"></script>
-                <!-- <script src="assets/javascript/airport.js"></script> -->
+                <script src="assets/javascript/airport.js"></script>
 
             </div>
             <div class="col s1">
