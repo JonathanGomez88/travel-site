@@ -1,10 +1,16 @@
 
 $("input[id='one-way']").on("click", function (event) {
   $(".return-class").hide()
+  $("#returnAirport").hide()
+  $("#returnDate").hide()
+  $("#returnTime").hide()
 })
 
 $("input[id='round-trip']").on("click", function (event) {
   $(".return-class").show()
+  $("#returnAirport").show()
+  $("#returnDate").show()
+  $("#returnTime").show()
 })
 
 
@@ -57,11 +63,10 @@ function oneWayDisplay(results) {
 
   for(var i = 0; i < resultsArray.length; i++) {
     
-    var inboundDuration;
     var flightFare = resultsArray[i].fare.total_price
-    var inboundArrivalDate;
     var airline;
-    var destinationAirport;
+    var outboundDuration;
+    var outboundArrivalDate;
     var departureAirport;
 
 
@@ -70,10 +75,10 @@ function oneWayDisplay(results) {
     for(var y = 0; y < resultsArray[i].itineraries.length; y++) {
 
       
-      airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
+      airline = resultsArray[i].itineraries[y].outbound.flights[0].marketing_airline;
       outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
       outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
-      departureAirport = resultsArray[i].itineraries[y].inbound.flights[0].origin.airport;
+      departureAirport = resultsArray[i].itineraries[y].outbound.flights[0].origin.airport;
 
     
 
@@ -141,5 +146,16 @@ $("#destination-iata").val("")
 $("#departure-date").val("yyyy/MM/dd")
 $("#return-date").val("yyyy/MM/dd")
 
+if(response=0) {
+  alert("Sorry, no non-stop flights available for those parameters")
+}
+
+
+function error (errorObject) {
+  console.log("Errors handled: " + errorObject.code);
+  alert("Your parameters are not valid")
+}
+
 
 })
+
