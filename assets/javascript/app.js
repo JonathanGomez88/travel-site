@@ -71,16 +71,13 @@ function roundTripDisplay(results) {
           console.log(res[0].nameAirline)
           airlineName = res[0].nameAirline
 
-          $("#flight-display-departure > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + airlineName + "</td><td>" + destinationAirport + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "</td></tr>")
-          $("#flight-display-return > tbody").prepend("<tr><td>" + departureAirport + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "</td></tr>")
 
         });
 
       
 
-
-
-        // This is where you want to append everything
+        $("#flight-display-departure > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>")
+        $("#flight-display-return > tbody").prepend("<tr><td>" + departureAirport + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDuration + ")" + "</td></tr>")
 
       }
     }
@@ -132,7 +129,7 @@ function oneWayDisplay(results) {
         });
 
                   // This is where you want to append everything
-                  $("#flight-display-departure > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "</td></tr>")
+                  $("#flight-display-departure > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>")
                   $("#flight-display-return > tbody").prepend("<tr><td>" + "N/A" + "</td><td>" + "N/A" + "</td><td>" + "N/A" + "</td></tr>")
 
       }
