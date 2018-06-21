@@ -63,7 +63,7 @@ $("input[id='round-trip']").on("click", function (event) {
           var minutes = time.substr(3, 4)
           var inboundDurationDisplay = hour + "h " + minutes + 'm';
   
-        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDurationDisplay + ")" + "</td></tr>" + departureAirport + "</td><td>" + flightNumberIn + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDurationDisplay + ")" + "</td></tr>")
+        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + airlineName + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDurationDisplay + ")" + "</td><td>" + departureAirport + "</td><td>" + flightNumberIn + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDurationDisplay + ")" + "</td></tr>")
         });
       }
     }

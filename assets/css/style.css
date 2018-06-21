@@ -4,7 +4,7 @@
 }
 
 h4{
-    color: #4db6ac;
+    color:#1565c0;
 }
 
 table{
@@ -23,4 +23,7 @@ table{
 .col s3 {
 margin-left: 100px;
 }
-
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color:#1565c0;
+    border: #1565c0;
+}
