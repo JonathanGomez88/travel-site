@@ -28,97 +28,44 @@ $("input[id='round-trip']").on("click", function (event) {
   })
 
 
-function roundTripDisplay(results) {
-
+  function roundTripDisplay(results) {
     var resultsArray = results.results
-
     console.log(resultsArray)
-
-    for (var i = 0; i < resultsArray.length; i++) {
-
-      var inboundDuration;
-      var flightFare = resultsArray[i].fare.total_price
-      var inboundArrivalDate;
-      var airline;
-      var outboundDuration;
-      var outboundArrivalDate;
-      var destinationAirport
-      var departureAirport
-      var flightNumberOut;
-      var flightNumberIn;
-
-
-
-
-
-      for (var y = 0; y < resultsArray[i].itineraries.length; y++) {
-
-
-        inboundDuration = resultsArray[i].itineraries[y].inbound.duration;
-        inboundArrivalDate = moment(resultsArray[i].itineraries[y].inbound.flights[0].arrives_at);
-        airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
-        outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
-        outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
-        destinationAirport = resultsArray[i].itineraries[y].inbound.flights[0].destination.airport;
-        departureAirport = resultsArray[i].itineraries[y].inbound.flights[0].origin.airport;
-        flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flights[0].flight_number
-        flightNumberIn = resultsArray[i].itineraries[y].inbound.flights[0].flights[0].flight_number
-        var airlineName = '';
-
+  
+    for (let i = 0; i < resultsArray.length; i++) {
+      for (let y = 0; y < resultsArray[i].itineraries.length; y++) {
+        var airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
         var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=6d7024-f62f82-09d9fc-a91c4a-e4539c&codeIataAirline=" + airline
-
         $.ajax({
           url: aeQueryURL,
           method: "GET"
         }).then(function (response) {
           var res = JSON.parse(response)
-          console.log(res[0].nameAirline)
-          airlineName = res[0].nameAirline
-
-
+          var airlineName = res[0].nameAirline;
+  
+          var inboundDuration = resultsArray[i].itineraries[y].inbound.duration;
+          var flightFare = resultsArray[i].fare.total_price;
+          var inboundArrivalDate = moment(resultsArray[i].itineraries[y].inbound.flights[0].arrives_at);
+          var outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
+          var outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
+          var destinationAirport = resultsArray[i].itineraries[y].inbound.flights[0].destination.airport;
+          var departureAirport = resultsArray[i].itineraries[y].inbound.flights[0].origin.airport;
+          var flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flight_number
+          var flightNumberIn = resultsArray[i].itineraries[y].inbound.flights[0].flight_number
+  
+        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>" + departureAirport + "</td><td>" + flightNumberIn + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDuration + ")" + "</td></tr>")
         });
-
-      
-
-        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>" + "<tr><td>" + departureAirport + "</td><td>" + flightNumberIn + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDuration + ")" + "</td></tr>")
-
       }
     }
-
-
   }
 
-
 function oneWayDisplay(results) {
-
     var resultsArray = results.results
-
     console.log(resultsArray)
 
-    for (var i = 0; i < resultsArray.length; i++) {
-
-      var flightFare = resultsArray[i].fare.total_price
-      var airline;
-      var outboundDuration;
-      var outboundArrivalDate;
-      var departureAirport;
-      var destinationAirport;
-      var flightNumberOut;
-      
-
-
-
-      for (var y = 0; y < resultsArray[i].itineraries.length; y++) {
-
-        
-
-        airline = resultsArray[i].itineraries[y].outbound.flights[0].marketing_airline;
-        outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
-        destinationAirport = resultsArray[i].itineraries[y].outbound.flights[0].destination.airport;      outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
-        departureAirport = resultsArray[i].itineraries[y].outbound.flights[0].origin.airport;
-        flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flights[0].flight_number
-        
-
+    for (let i = 0; i < resultsArray.length; i++) {
+     for (let y = 0; y < resultsArray[i].itineraries.length; y++) {
+        var airline = resultsArray[i].itineraries[y].outbound.flights[0].marketing_airline;
         var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=526f3f-81b813-daa58b-cf4f23-0f0bfd&codeIataAirline=" + airline
 
         $.ajax({
@@ -127,15 +74,20 @@ function oneWayDisplay(results) {
         }).then(function (response) {
           console.log(aeQueryURL)
           console.log(response);
-
           var res = JSON.parse(response)
           console.log(res[0].nameAirline)
           airlineName = res[0].nameAirline
 
+        var outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
+        var destinationAirport = resultsArray[i].itineraries[y].outbound.flights[0].destination.airport;var outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
+        var departureAirport = resultsArray[i].itineraries[y].outbound.flights[0].origin.airport;
+        var flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flights[0].flight_number
+        
+        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td><td>" + "NA" + "<tr><td>" + "N/A" + "</td><td>" + "N/A" + "</td><td>" + "N/A" + "</td></tr>")
+ 
         });
 
-                  // This is where you want to append everything
-                  $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>" + "NA" + "<tr><td>" + "N/A" + "</td><td>" + "N/A" + "</td><td>" + "N/A" + "</td></tr>")
+
 
       }
     }
