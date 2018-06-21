@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    
+
     <!--Jumbotron-->
     <div class="row">
         <div class="col s12 m12">
@@ -67,11 +67,11 @@
                     <label class="return-class" for="return date">Return Date</label>
                     <input class="return-class" type="date" id="return-date">
                     <br>
-                    <a class="waves-effect waves-light btn blue darken-3" id="submit-btn">
+                    <a class="waves-effect waves-light btn blue darken-3  modal-trigger" href="#modal1" id="submit-btn">
                         <i class="material-icons right blue darken-3">airplanemode_active</i>Go</a>
                 </form>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col s0">
@@ -84,12 +84,16 @@
                         <tr>
                             <th>$Price</th>
                             <th>Departure Airline</th>
-                            <th>Departure <br> Airport</th>
-                            <th>Departure <br> Flight ID</th>
+                            <th>Departure
+                                <br> Airport</th>
+                            <th>Departure
+                                <br> Flight ID</th>
                             <th>Departure Date</th>
                             <th>Departure Time</th>
-                            <th id="returnAirport">Return <br> Airport</th>
-                            <th>Return <br> Flight ID</th>
+                            <th id="returnAirport">Return
+                                <br> Airport</th>
+                            <th>Return
+                                <br> Flight ID</th>
                             <th id="returnDate">Return Date</th>
                             <th id="returnTime">Return Time</th>
                         </tr>
@@ -103,6 +107,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Trigger -->
+    <!-- <a class="btn waves-effect modal-trigger" href="#modal1">Modal 1</a> -->
+    <!-- <a  class="btn waves-effect red">Modal 2</a> -->
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>We're Sorry</h4>
+            <p>Your parameters were invalid OR no non-stop flights are available.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="modal-action modal-close waves-effect waves-green">Try Again</a>
+        </div>
+    </div>
+    <!--Modal End-->
+
     <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/airport.js"></script>
     <!-- <script src="assets/javascript/airport2.js"></script> -->
