@@ -3,7 +3,8 @@
 img{  
     height:350px;
     /* background-position: 0px -150px; */
-    box-shadow: inset 2px 2px 25px  rgba(132, 132, 136, 0.774);
+    /* box-shadow: inset 2px 2px 25px  rgba(132, 132, 136, 0.774); */
+    color: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
 }
 
 
