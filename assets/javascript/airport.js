@@ -16,8 +16,9 @@ var options = {
   
   var fuse = new Fuse(airports, options)
   
+ 
+  var ac = $(".auto")
   
-  var ac = $('.auto')
     .on('click', function(e) {
       e.stopPropagation();
     })
@@ -70,7 +71,7 @@ var options = {
     }
     
     if (ac.val().length > 0) {
-      results = _.take(fuse.search(ac.val()), 7);
+      results = _.take(fuse.search(ac.val()), 4);
       numResults = results.length;
       
       var divs = results.map(function(r, i) {
