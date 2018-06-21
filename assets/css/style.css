@@ -1,4 +1,19 @@
-/* body{
-    background-image: url("../images/surf-beach.jpg")
+#departure-div,
+#return-div{
+    text-align: center;
+     
    
-} */
+}
+h4{
+    color: #4db6ac;
+}
+table{
+    margin: 0;
+}
+#left-div{
+    margin-top: 5%;
+}
+.container{
+    margin-top: 3%;
+    margin-bottom: 8%;
+}

@@ -9,8 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Biryani" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Biryani" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
@@ -18,27 +18,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
     <script src="https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js"></script>
     <script src="https://screenfeedcontent.blob.core.windows.net/html/airports.js"></script>
-     <link rel="stylesheet" href="assets/css/header.css">
-     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="stylesheet" href="assets/css/header.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body>
     <!--Jumbotron-->
-     <div class="row">
-            <div class="col s12 m12">
-              <div >
+    <div class="row">
+        <div class="col s12 m12">
+            <div>
                 <div class="z-depth-4  grey lighten-1" id="image-holder" style="height:350px;">
-                    <h1 id="logo">E/Z</h1>    <p id="sublogo">Travel</p>
-                </div>   
-              </div>
+                    <h1 id="logo">E/Z</h1>
+                    <p id="sublogo">Travel</p>
+                </div>
             </div>
-          </div>
+        </div>
+    </div>
     <!--Jumbotron end-->
-    
+
     <div class="container">
         <div class="row">
-            <div class="col s2">
-                <input class="auto" type="text" placeholder="enter city for IATA code">
+            <div class="col s2" id="left-div">
+                <input class="auto" type="text" placeholder="enter city">
             </div>
             <div class="col s8">
                 <form action="">
@@ -50,11 +51,11 @@
                     <input class="bottom" type="text" placeholder="LAX" id="destination-iata">
                     <p>
                         <label>
-                            <input name="group1" id="round-trip" type="radio" checked />
+                            <input  name="group1" id="round-trip" type="radio" checked />
                             <span>Roundtrip</span>
                         </label>
                         <label>
-                            <input name="group1" type="radio" id="one-way" />
+                            <input  name="group1" type="radio" id="one-way" />
                             <span>One Way</span>
                         </label>
                     </p>
@@ -65,43 +66,54 @@
                     <label class="return-class" for="return date">Return Date</label>
                     <input class="return-class" type="date" id="return-date">
                     <br>
-                    <a class="waves-effect waves-light btn" id="submit-btn">
-                        <i class="material-icons right">airplanemode_active</i>Go</a>
+                    <a class="waves-effect waves-light btn " id="submit-btn">
+                        <i class="material-icons right ">airplanemode_active</i>Go</a>
                 </form>
             </div>
             <div class="col s2">
             </div>
         </div>
         <div class="row">
-            <div class="col s1">
+            <div class="col s2">
+
             </div>
-            <div class="col s10">
-                <table id="flight-display">
+            <div class="col s5">
+                <h4 id="departure-div">Departure</h4>
+                <table class="striped responsive-table" id="flight-display-departure">
                     <thead>
                         <tr>
                             <th>$Price</th>
-                            <th>Departure Airline</th>
-                            <th>Departure Airport</th>
-                            <th>Departure Date</th>
-                            <th>Departure Time</th>
-                            
-                            <th id="returnAirport">Return Airport</th>
-                            <th id="returnDate">Return Date</th>
-                            <th id="returnTime">Return Time</th>
+                            <th>Airline</th>
+                            <th>Airport</th>
+                            <th>Date</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="departure-results">
                         <!-- js prepends here -->
                     </tbody>
                 </table>
                 <script src="assets/javascript/app.js"></script>
                 <script src="assets/javascript/airport.js"></script>
                 <!-- <script src="assets/javascript/airport2.js"></script> -->
-                 <script src="assets/javascript/header.js"></script>
-
-
+                <script src="assets/javascript/header.js"></script>
             </div>
-            <div class="col s1">
+            <div class="col s3">
+                <h4  id="return-div" >Return</h4>
+                <table class="striped responsive-table" id="flight-display-return">
+                    <thead>
+                        <tr>
+                            <th id="returnAirport">Airport</th>
+                            <th id="returnDate">Date</th>
+                            <th id="returnTime">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="return-results">
+                        <!-- js prepends here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s2">
             </div>
         </div>
     </div>
