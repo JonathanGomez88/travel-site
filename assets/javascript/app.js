@@ -61,8 +61,8 @@ function roundTripDisplay(results) {
         outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
         destinationAirport = resultsArray[i].itineraries[y].inbound.flights[0].destination.airport;
         departureAirport = resultsArray[i].itineraries[y].inbound.flights[0].origin.airport;
-        flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flights[0].flight_number
-        flightNumberIn = resultsArray[i].itineraries[y].inbound.flights[0].flights[0].flight_number
+        flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flight_number
+        flightNumberIn = resultsArray[i].itineraries[y].inbound.flights[0].flight_number
         var airlineName = '';
 
         var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=6d7024-f62f82-09d9fc-a91c4a-e4539c&codeIataAirline=" + airline
@@ -80,7 +80,7 @@ function roundTripDisplay(results) {
 
       
 
-        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>" + "<tr><td>" + departureAirport + "</td><td>" + flightNumberIn + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDuration + ")" + "</td></tr>")
+        $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + "</td><td>" + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td>" + "<td>" + departureAirport + "</td><td>" + flightNumberIn + "</td><td>" + inboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + inboundArrivalDate.format("hh:mm a") + "<br>" + "(" + inboundDuration + ")" + "</td></tr>")
 
       }
     }
@@ -116,7 +116,7 @@ function oneWayDisplay(results) {
         outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
         destinationAirport = resultsArray[i].itineraries[y].outbound.flights[0].destination.airport;      outboundArrivalDate = moment(resultsArray[i].itineraries[y].outbound.flights[0].arrives_at);
         departureAirport = resultsArray[i].itineraries[y].outbound.flights[0].origin.airport;
-        flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flights[0].flight_number
+        flightNumberOut = resultsArray[i].itineraries[y].outbound.flights[0].flight_number
         
 
         var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=526f3f-81b813-daa58b-cf4f23-0f0bfd&codeIataAirline=" + airline
@@ -135,7 +135,7 @@ function oneWayDisplay(results) {
         });
 
                   // This is where you want to append everything
-                  $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td></tr>" + "NA" + "<tr><td>" + "N/A" + "</td><td>" + "N/A" + "</td><td>" + "N/A" + "</td></tr>")
+                  $("#flight-display > tbody").prepend("<tr><td>$" + flightFare + "</td><td>" + "Placeholder" + "</td><td>" + destinationAirport + "</td><td>" + flightNumberOut + outboundArrivalDate.format("MM/DD/YYYY") + "</td><td>" + outboundArrivalDate.format("hh:mm a") + "<br>" + "(" + outboundDuration + ")" + "</td>" + "NA" + "<td>" + "N/A" + "</td><td>" + "N/A" + "</td><td>" + "N/A" + "</td></tr>")
 
       }
     }
