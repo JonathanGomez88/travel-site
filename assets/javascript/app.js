@@ -35,7 +35,7 @@ function roundTripDisplay(results) {
   for (let i = 0; i < resultsArray.length; i++) {
     for (let y = 0; y < resultsArray[i].itineraries.length; y++) {
       var airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
-      var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=6d7024-f62f82-09d9fc-a91c4a-e4539c&codeIataAirline=" + airline
+      var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=9b19be-736be9-6955e9-60dab9-9ea13c&codeIataAirline=" + airline
       $.ajax({
         url: aeQueryURL,
         method: "GET"
