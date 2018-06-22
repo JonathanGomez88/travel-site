@@ -36,6 +36,12 @@ img{
     margin-top: 2px;
 }
 
+@media screen and (min-device-width : 1600px) and (max-width: 2400px){
+    #image-holder{
+    background-position: 0px -180px;
+    }
+}
+
 @media screen and (min-device-width : 1490px) and (max-width: 1600px){
     #image-holder{
     background-position: 0px -100px;
