@@ -10,7 +10,6 @@ img{
 
     #image-holder{
         margin-top: 10px;
-        /* background-position: 0px -320px; */
         background-repeat: no-repeat;
         background-size:cover;
         border-radius: 10px;
@@ -25,6 +24,7 @@ img{
     text-shadow: 4px 4px 8px rgb(91, 91, 92);
     margin-left: 20px;
     margin-top: 30px;
+    margin-bottom: 2px;
 }
 
 #sublogo{
@@ -32,7 +32,8 @@ img{
     font-size: 24px;
     color: rgb(230, 230, 236);
     text-shadow: 3px 3px 10px rgb(91, 91, 92);
-    margin-left: 40px;
+    margin-left: 20px;
+    margin-top: 2px;
 }
 
 @media screen and (min-device-width : 1490px) and (max-width: 1600px){
