@@ -1,6 +1,6 @@
 
 // Put links to our images in this image array.
-var images = ['assets/images/beach.jpg', 'assets/images/bridge.jpg', 'assets/images/lake.jpg', 'assets/images/canada.jpg', 'assets/images/goldenGate.jpg', 'assets/images/palmTrees.jpg', 'assets/images/paris.jpg', 'assets/images/beach&hills.jpg', 'assets/images/skyline2.jpg', 'assets/images/sydney.jpg'];
+var images = ['assets/images/beach.jpg', 'assets/images/bridge.jpg', 'assets/images/lake.jpg', 'assets/images/canada.jpg', 'assets/images/goldengate.jpg', 'assets/images/palmTrees.jpg', 'assets/images/paris.jpg', 'assets/images/beach&hills.jpg', 'assets/images/skyline2.jpg', 'assets/images/Sydney.jpg'];
 
 // Variable showImage will hold the setInterval when we start the slideshow
 var showImage;
