@@ -1,6 +1,6 @@
 
 // Put links to our images in this image array.
-var images = ['assets/images/airplane.png', 'assets/images/bridge.jpg', 'assets/images/lake.jpg', 'assets/images/beach.jpg', 'assets/images/singapore.jpg', 'assets/images/goldenGate.jpg', 'assets/images/palmTrees.jpg','assets/images/africa.jpg', 'assets/images/skyline.jpg', 'assets/images/paris.jpg', 'assets/images/skyline2.jpg', 'assets/images/dubai.jpg'];
+var images = ['assets/images/beach.jpg', 'assets/images/bridge.jpg', 'assets/images/lake.jpg', 'assets/images/canada.jpg', 'assets/images/goldenGate.jpg', 'assets/images/palmTrees.jpg', 'assets/images/paris.jpg', 'assets/images/beach&hills.jpg', 'assets/images/skyline2.jpg', 'assets/images/sydney.jpg'];
 
 // Variable showImage will hold the setInterval when we start the slideshow
 var showImage;
@@ -29,7 +29,7 @@ function nextImage() {
 }
 
 //  Use showImage to hold the setInterval to run nextImage.
-showImage = setInterval(nextImage, 7000);
+showImage = setInterval(nextImage, 8500);
 
 // This will run the display image function as soon as the page loads.
-displayImage();
+displayImage()
