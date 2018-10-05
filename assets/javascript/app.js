@@ -22,14 +22,13 @@ function roundTripDisplay(results) {
   for (let i = 0; i < resultsArray.length; i++) {
     for (let y = 0; y < resultsArray[i].itineraries.length; y++) {
       var airline = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline;
-      var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=9b19be-736be9-6955e9-60dab9-9ea13c&codeIataAirline=" + airline
+      var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=bb3762-ea4934&codeIataAirline=" + airline
       $.ajax({
         url: aeQueryURL,
         method: "GET"
       }).then(function (response) {
         var res = JSON.parse(response)
-        var airlineName = res[0].nameAirline;
-
+        var airlineName = resultsArray[i].itineraries[y].inbound.flights[0].marketing_airline
         var inboundDuration = resultsArray[i].itineraries[y].inbound.duration;
         var flightFare = resultsArray[i].fare.total_price;
         var inboundArrivalDate = moment(resultsArray[i].itineraries[y].inbound.flights[0].arrives_at);
@@ -63,7 +62,7 @@ function oneWayDisplay(results) {
   for (let i = 0; i < resultsArray.length; i++) {
     for (let y = 0; y < resultsArray[i].itineraries.length; y++) {
       var airline = resultsArray[i].itineraries[y].outbound.flights[0].marketing_airline;
-      var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=6d7024-f62f82-09d9fc-a91c4a-e4539c&codeIataAirline=" + airline
+      var aeQueryURL = "https://aviation-edge.com/api/public/airlineDatabase?key=bb3762-ea4934&codeIataAirline=" + airline
 
       $.ajax({
         url: aeQueryURL,
@@ -119,10 +118,10 @@ $("#submit-btn").on("click", function (event) {
   var destinationIATA = $("#destination-iata").val().trim();
 
 
-  var oneWayQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&nonstop=true&number_of_results=5"
+  var oneWayQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=dBGC4dOQP6rau39c0Y4xH5ZnwG2WXhjI&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&nonstop=true&number_of_results=5"
 
 
-  var roundTripQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=%20vA7jW9vS5DQj5MHWkavbCHddVJqDV47d&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&return_date=" + returnDate + "&nonstop=true&number_of_results=5"
+  var roundTripQueryURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=dBGC4dOQP6rau39c0Y4xH5ZnwG2WXhjI&origin=" + departureIATA + "&destination=" + destinationIATA + "&departure_date=" + departureDate + "&return_date=" + returnDate + "&nonstop=true&number_of_results=5"
 
 
 
