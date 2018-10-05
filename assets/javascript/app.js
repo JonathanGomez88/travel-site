@@ -72,7 +72,7 @@ function oneWayDisplay(results) {
         console.log();
         var res = JSON.parse(response)
         console.log()
-        airlineName = res[0].nameAirline
+        var airlineName = resultsArray[i].itineraries[y].outbound.flights[0].marketing_airline
 
         var outboundDuration = resultsArray[i].itineraries[y].outbound.duration;
         var flightFare = resultsArray[i].fare.total_price;
